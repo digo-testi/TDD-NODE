@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/digo-testi/TDD-NODE/issues"
   },
-  "homepage": "https://github.com/digo-testi/TDD-NODE#readme"
+  "homepage": "https://github.com/digo-testi/TDD-NODE#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "git-commit-msg-linter": "^2.3.11",
+    "typescript": "^3.7.4"
+  }
 }
