@@ -22,6 +22,8 @@
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
     "git-commit-msg-linter": "^2.3.11",
-    "typescript": "^3.7.4"
+    "husky": "^4.0.6",
+    "typescript": "^3.7.4",
+    "lint-staged": "^9.5.0"
   }
 }
