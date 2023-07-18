@@ -10,7 +10,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digo-testi/TDD-NODE.git",
-    "test": "jest"
+    "test": "jest --passWithNoTests --watch",
+    "test:staged": "jest --passWithNoTests"
   },
   "author": "",
   "license": "ISC",
