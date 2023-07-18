@@ -4,15 +4,12 @@ import { HttpRequest, HttpResponse } from "../protocols/http"
 
 export class SignUpController {
     handle(httpRequest: HttpRequest): HttpResponse {
+        const requiredFields = ['name', 'email', 'passwordConfirmation']
 
-        if(!httpRequest.body.name){
-            return badRequest(new MissingParamError('name'))
-        }
-        if(!httpRequest.body.email){
-            return badRequest(new MissingParamError('email'))
-        }
-        if(!httpRequest.body.passwordConfirmation){
-            return badRequest(new MissingParamError('passwordConfirmation'))
+        for (const field of requiredFields){
+            if (!httpRequest.body[field]){
+                return badRequest(new MissingParamError(field))
+            }
         }
     }
 }
