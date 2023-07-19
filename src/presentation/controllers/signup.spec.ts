@@ -110,7 +110,7 @@ describe("SignUp Controller", () => {
     expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
   });
 
-  test("Should return 500 if EmaailValidator throws", () => {
+  test("Should return 500 if EmailValidator throws", () => {
     const emailValidatorstub = makeEmailValidatorWithError()
     const sut = new SignUpController(emailValidatorstub)
     const httpRequest = {
