@@ -1,6 +1,6 @@
 import { MissingParamError, InvalidParamError, ServerError } from "../../errors";
 import { SignUpController } from "./signup";
-import { EmailValidator, AccountModel, AddAccount, AddAccountModel  } from "./signup-protocols";
+import { EmailValidator, AccountModel, AddAccount, AddAccountModel } from "./signup-protocols";
 
 interface SutTypes {
   sut: SignUpController
@@ -23,7 +23,7 @@ const makeAddAccount = (): AddAccount => {
       const fakeAccount = {
         id: 'valid_id',
         name: 'valid_name',
-        email: 'valid_email',
+        email: "valid_email@mail.com",
         password: 'valid_password'
       }
       return fakeAccount
@@ -163,9 +163,11 @@ describe("SignUp Controller", () => {
       },
     };
     sut.handle(httpRequest);
-    expect(addSpy).toHaveBeenCalledWith({name: "any_name",
-    email: "any_email@mail.com",
-    password: "any_password",})
+    expect(addSpy).toHaveBeenCalledWith({
+      name: "any_name",
+      email: "any_email@mail.com",
+      password: "any_password",
+    })
   });
 
   test("Should return 500 if AddAccount throws", () => {
@@ -185,4 +187,25 @@ describe("SignUp Controller", () => {
     expect(httpResponse.statusCode).toBe(500);
     expect(httpResponse.body).toEqual(new ServerError())
   });
+
+  test("Should return 200 if valid data is provided", () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        name: "valid_name",
+        email: "valid_email@mail.com",
+        password: "valid_password",
+        passwordConfirmation: "valid_password",
+      },
+    };
+    const httpResponse = sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(200);
+    expect(httpResponse.body).toEqual({
+      id: 'valid_id',
+      name: "valid_name",
+      email: "valid_email@mail.com",
+      password: "valid_password",
+    })
+  });
+
 })
