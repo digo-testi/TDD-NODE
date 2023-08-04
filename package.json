@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "^13.1.6",
+    "@types/validator": "^13.9.0",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
@@ -39,5 +40,8 @@
     "lint-staged": "^9.5.0",
     "ts-jest": "29.1.1",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "validator": "^13.11.0"
   }
 }
